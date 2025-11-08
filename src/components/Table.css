@@ -1,0 +1,28 @@
+/* ----- Contenedor de la tabla ----- */
+.tabla-container {
+  padding: 8px;
+  margin-top: 17px;
+  margin-left: 220px; /* ancho del sidebar */
+  transition: margin-left 0.3s ease;
+}
+
+/* Tabla */
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.tabla th,
+.tabla td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+/* ----- En pantallas pequeñas ----- */
+@media (max-width: 768px) {
+  .tabla-container {
+    margin-left: 0; /* elimina el espacio del sidebar */
+  }
+}
