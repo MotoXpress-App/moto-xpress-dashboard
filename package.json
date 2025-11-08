@@ -1,4 +1,5 @@
 {
+  "homepage": "https://MotoXpress-App.github.io/moto-xpress-dashboard",
   "name": "monitor",
   "version": "0.1.0",
   "private": true,
@@ -15,7 +16,9 @@
     "react-router": "^7.9.4",
     "react-router-dom": "^7.9.4",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -40,5 +43,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   }
 }
