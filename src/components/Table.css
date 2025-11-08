@@ -2,7 +2,6 @@
 .tabla-container {
   padding: 8px;
   margin-top: 17px;
-  margin-left: 220px; /* ancho del sidebar */
   transition: margin-left 0.3s ease;
 }
 

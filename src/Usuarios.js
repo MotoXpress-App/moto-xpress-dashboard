@@ -38,8 +38,10 @@ const Usuarios = () => {
     return (
         <div>
             <Sidebar />
-            {/*<h1>Usuarios</h1>*/}
-            <Table data={data} headers={headers} detalles={detalles} />
+            <div style={{ marginLeft: "220px" }}>
+                {/*<h1>Usuarios</h1>*/}
+                <Table data={data} headers={headers} detalles={detalles} />
+            </div>
         </div>
     );
 };

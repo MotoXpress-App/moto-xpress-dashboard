@@ -35,8 +35,10 @@ const Choferes = () => {
     return (
         <div>
             <Sidebar />
-           {/* <h1>Choferes</h1> */}
-            <TableDriver data={data} headers={headers} detalles={detalles} />
+            <div style={{ marginLeft: "220px" }}>
+               {/* <h1>Choferes</h1> */}
+                <TableDriver data={data} headers={headers} detalles={detalles} />
+            </div>
         </div>
     );
 };

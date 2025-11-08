@@ -4,11 +4,13 @@ import axios from "axios";
 import Sidebar from "../../components/Sidebar";
 import { Form, Row, Col, Image, Button, Modal, ListGroup } from "react-bootstrap";
 import TableTravel from "../Travel/TableTravel";
+import "../../Viajes.css";
 
 const UsuarioDetalle = () => {
   const { id } = useParams();
   const [user, setUser] = useState(null);
   const [travel, setTravel] = useState([]);
+  const [typeTravel, setTypeTravel] = useState(1); // 🔹 Por defecto, type_travel = 1
 
   // Estados base
   const [formData, setFormData] = useState({ name: "", lastname: "", phone: "" });
@@ -68,23 +70,24 @@ const UsuarioDetalle = () => {
     };
 
     fetchUser();
+  }, [id]);
 
-    //obtener historial de viajes
+  // Obtener historial de viajes cuando cambie el tipo
+  useEffect(() => {
     const fetchTravel = async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API_URL}/travel/all-by-id-user/${id}`
+          `${process.env.REACT_APP_API_URL}/travel/all-by-id-user/${id}?type_travel=${typeTravel}`
         );
         setTravel(response.data.data);
 
       } catch (error) {
-        console.error("Error al cargar usuario:", error);
+        console.error("Error al cargar viajes:", error);
       }
     };
 
     fetchTravel();
-
-  }, [id]);
+  }, [id, typeTravel]);
 
   if (!user) return <p>Cargando usuario...</p>;
 
@@ -211,6 +214,16 @@ const UsuarioDetalle = () => {
   ];
 
   const years = Array.from({ length: 26 }, (_, i) => 2000 + i);
+
+  // 🔹 Nombres legibles para los tipos de viaje
+  const tiposViaje = [
+    { id: 1, nombre: "Viajes" },
+    { id: 2, nombre: "Envios" },
+    { id: 3, nombre: "Fletes liviano" },
+    { id: 4, nombre: "Fletes pesados" },
+    { id: 5, nombre: "Emergencias motovehicular" },
+    { id: 6, nombre: "Gomeria movil" },
+  ];
 
   const headers = [
     { key: "id", label: "ID" },
@@ -411,14 +424,29 @@ const UsuarioDetalle = () => {
       )}
 
       {/* --- Historial de viajes --- */}
-      {travel.length > 0 ? 
-      <>
-        <h3 style={{ marginTop:'30px' }}>Historial de viajes</h3>
+      <h3 style={{ marginTop:'30px' }}>Historial de viajes</h3>
+
+      {/* 🔹 Navbar de tipos de viaje */}
+      <div style={{ display: 'flex', gap: '12px', marginBottom: '24px' }}>
+        {tiposViaje.map((tipo) => (
+          <button
+            key={tipo.id}
+            onClick={() => setTypeTravel(tipo.id)}
+            className={`btn-viaje ${typeTravel === tipo.id ? "activo" : ""}`}
+          >
+            {tipo.nombre}
+          </button>
+        ))}
+      </div>
+
+      {/* 🔹 Tabla de viajes */}
+      {travel.length > 0 ? (
         <TableTravel data={travel} headers={headers}/>
-      </>
-      : 
-      null
-      }
+      ) : (
+        <p style={{ textAlign: 'center', color: '#6b7280', marginTop: '20px' }}>
+          No hay viajes de este tipo para este usuario.
+        </p>
+      )}
 
       {/* Modal para ver imagen grande */}
       <Modal show={showModal} onHide={handleClose} centered size="lg">

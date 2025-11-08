@@ -3,10 +3,15 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Sidebar from "../../components/Sidebar";
 import { Form, Row, Col, Image, Button, Modal, ListGroup } from "react-bootstrap";
+import TableTravel from "../Travel/TableTravel";
+import "../../Viajes.css";
 
 const DriverDetalle = () => {
   const { id } = useParams();
   const [user, setUser] = useState(null);
+  const [travel, setTravel] = useState([]);
+  const [typeTravel, setTypeTravel] = useState(null); // Se inicializa según el rol
+  const [availableTypes, setAvailableTypes] = useState([]); // Tipos disponibles según el rol
 
   // Estados base
   const [formData, setFormData] = useState({ name: "", lastname: "", phone: "" });
@@ -38,6 +43,31 @@ const DriverDetalle = () => {
     setSelectedImage(null);
   };
 
+  // Función para determinar tipos de viajes según el rol
+  const getTravelTypesByRole = (roles) => {
+    if (!roles || roles.length === 0) return [];
+
+    // Buscar el rol del chofer (rol 2, 3, 5 o 6)
+    const driverRole = roles.find(r => [2, 3, 5, 6].includes(r.id));
+
+    if (!driverRole) return [];
+
+    const rol = driverRole.id;
+    let types = [];
+
+    if (rol === 2) {
+      types = [1, 2];
+    } else if (rol === 3) {
+      types = [4];
+    } else if (rol === 5) {
+      types = [3, 5];
+    } else if (rol === 6) {
+      types = [1, 2, 6];
+    }
+
+    return types;
+  };
+
   // Obtener usuario
   useEffect(() => {
     const fetchUser = async () => {
@@ -60,12 +90,40 @@ const DriverDetalle = () => {
             year_motorcycle: data.driver.year_motorcycle || "",
           });
         }
+
+        // Determinar tipos de viajes disponibles según el rol
+        const types = getTravelTypesByRole(data.roles);
+        setAvailableTypes(types);
+
+        // Establecer el primer tipo como seleccionado por defecto
+        if (types.length > 0) {
+          setTypeTravel(types[0]);
+        }
       } catch (error) {
         console.error("Error al cargar usuario:", error);
       }
     };
     fetchUser();
   }, [id]);
+
+  // Obtener historial de viajes cuando cambie el tipo
+  useEffect(() => {
+    if (!typeTravel || !id) return;
+
+    const fetchTravel = async () => {
+
+      try {
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_URL}/travel/all-by-id-driver/${id}?type_travel=${typeTravel}`
+        );
+        setTravel(response.data.data || []);
+      } catch (error) {
+        console.error("Error al cargar viajes:", error);
+      }
+    };
+
+    fetchTravel();
+  }, [typeTravel, id]);
 
   if (!user) return <p>Cargando usuario...</p>;
 
@@ -192,6 +250,29 @@ const DriverDetalle = () => {
   ];
 
   const years = Array.from({ length: 26 }, (_, i) => 2000 + i);
+
+  // 🔹 Nombres legibles para los tipos de viaje
+  const tiposViaje = [
+    { id: 1, nombre: "Viajes" },
+    { id: 2, nombre: "Envios" },
+    { id: 3, nombre: "Fletes liviano" },
+    { id: 4, nombre: "Fletes pesados" },
+    { id: 5, nombre: "Emergencias motovehicular" },
+    { id: 6, nombre: "Gomeria movil" },
+  ];
+
+  // Filtrar solo los tipos disponibles para este chofer
+  const tiposViajeDisponibles = tiposViaje.filter(tipo => availableTypes.includes(tipo.id));
+
+  const headers = [
+    { key: "id", label: "ID" },
+    { key: "user_name", label: "Nombre" },
+    { key: "status", label: "Estado" },
+    { key: "from_info", label: "Desde" },
+    { key: "to_info", label: "Hasta" },
+    { key: "price", label: "Precio" },
+    { key: "id_type_payment", label: "Tipo de pago" },
+  ];
 
   return (
     <div style={{ marginLeft: "250px", padding: "20px" }}>
@@ -378,6 +459,35 @@ const DriverDetalle = () => {
           >
             Guardar Cambios Chofer
           </Button>
+        </>
+      )}
+
+      {/* --- Historial de viajes --- */}
+      {user.driver && availableTypes.length > 0 && (
+        <>
+          <h3 style={{ marginTop:'30px' }}>Historial de viajes</h3>
+
+          {/* 🔹 Navbar de tipos de viaje - Solo muestra los tipos permitidos para este chofer */}
+          <div style={{ display: 'flex', gap: '12px', marginBottom: '24px' }}>
+            {tiposViajeDisponibles.map((tipo) => (
+              <button
+                key={tipo.id}
+                onClick={() => setTypeTravel(tipo.id)}
+                className={`btn-viaje ${typeTravel === tipo.id ? "activo" : ""}`}
+              >
+                {tipo.nombre}
+              </button>
+            ))}
+          </div>
+
+          {/* 🔹 Tabla de viajes */}
+          {travel.length > 0 ? (
+            <TableTravel data={travel} headers={headers}/>
+          ) : (
+            <p style={{ textAlign: 'center', color: '#6b7280', marginTop: '20px' }}>
+              No hay viajes de este tipo para este chofer.
+            </p>
+          )}
         </>
       )}
 

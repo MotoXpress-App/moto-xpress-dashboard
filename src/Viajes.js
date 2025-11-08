@@ -68,9 +68,9 @@ const Viajes = () => {
   ];
 
   return (
-    <div className="flex">
+    <div>
       <Sidebar />
-      <div className="flex-1 p-6">
+      <div style={{ marginLeft: "220px", padding: "20px" }}>
         <h1 className="title-viajes">Viajes</h1>
         {/* 🔹 Navbar de tipos de viaje */}
         <div className="navbar-viajes">
