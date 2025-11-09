@@ -6,6 +6,7 @@ import Usuarios from './Usuarios';
 import Choferes from './Choferes';
 import Viajes from './Viajes';
 import Configs from './Configs';
+import Pagos from './Pagos';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import UsuarioDetalle from './Page/User/UsuarioDetalle';
 import ChoferesDetalle from './Page/Driver/DriverDetalle';
@@ -54,6 +55,10 @@ const App = () => {
         <Route path="/configs" element={
           <PrivateRoute>
             <Configs/>
+          </PrivateRoute>} />
+        <Route path="/pagos" element={
+          <PrivateRoute>
+            <Pagos/>
           </PrivateRoute>} />
 
         {/* page */}

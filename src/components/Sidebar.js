@@ -34,6 +34,7 @@ export default function Sidebar() {
           <Link to="/usuarios" className="nav-link text-white">Usuarios</Link>
           <Link to="/Choferes" className="nav-link text-white">Choferes</Link>
           <Link to="/Viajes" className="nav-link text-white">Viajes</Link>
+          <Link to="/pagos" className="nav-link text-white">Pagos</Link>
           <Link to="/configs" className="nav-link text-white">Configs</Link>
           <Link to="/Login" className="nav-link text-white">Salir</Link>
         </nav>
