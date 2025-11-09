@@ -35,10 +35,25 @@ const Choferes = () => {
     return (
         <div>
             <Sidebar />
-            <div style={{ marginLeft: "220px" }}>
+            <div className="choferes-container" style={{ marginLeft: "220px" }}>
                {/* <h1>Choferes</h1> */}
                 <TableDriver data={data} headers={headers} detalles={detalles} />
             </div>
+
+            <style>{`
+                @media (max-width: 768px) {
+                    .choferes-container {
+                        margin-left: 0 !important;
+                        padding-top: 60px;
+                    }
+                }
+
+                @media (max-width: 480px) {
+                    .choferes-container {
+                        padding: 5px;
+                    }
+                }
+            `}</style>
         </div>
     );
 };

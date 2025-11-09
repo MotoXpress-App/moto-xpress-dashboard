@@ -236,7 +236,7 @@ const UsuarioDetalle = () => {
   ];
 
   return (
-    <div style={{ marginLeft: "250px", padding: "20px" }}>
+    <div className="usuario-detail-container" style={{ marginLeft: "250px", padding: "20px" }}>
       <Sidebar />
       <h1>Detalle de Usuario</h1>
 
@@ -482,6 +482,48 @@ const UsuarioDetalle = () => {
           </Button>
         </Modal.Footer>
       </Modal>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .usuario-detail-container {
+            margin-left: 0 !important;
+            padding: 10px !important;
+          }
+
+          .usuario-detail-container h1,
+          .usuario-detail-container h3 {
+            padding-top: 60px;
+            font-size: 20px;
+          }
+
+          .usuario-detail-container h3 {
+            font-size: 18px;
+          }
+
+          .usuario-detail-container .btn {
+            width: 100%;
+            margin-bottom: 10px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .usuario-detail-container {
+            padding: 8px !important;
+          }
+
+          .usuario-detail-container h1 {
+            font-size: 18px;
+          }
+
+          .usuario-detail-container h3 {
+            font-size: 16px;
+          }
+
+          .usuario-detail-container form .row {
+            margin: 0;
+          }
+        }
+      `}</style>
     </div>
   );
 };

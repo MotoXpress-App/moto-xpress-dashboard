@@ -8,6 +8,7 @@
   gap: 12px;
   margin-bottom: 24px;
   padding: 12px;
+  flex-wrap: wrap; /* Permite que los botones se envuelvan en pantallas pequeñas */
 }
 
 .btn-viaje {
@@ -20,6 +21,7 @@
   font-size: 14px;
   cursor: pointer;
   transition: all 0.25s ease;
+  white-space: nowrap;
 }
 
 .btn-viaje:hover {
@@ -33,6 +35,148 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
+/* Responsive para navbar de viajes */
+@media (max-width: 768px) {
+  .navbar-viajes {
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .btn-viaje {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-viajes {
+    gap: 6px;
+    padding: 6px;
+  }
+
+  .btn-viaje {
+    padding: 5px 10px;
+    font-size: 12px;
+    flex: 1 1 auto;
+    min-width: 100px;
+  }
+}
+
 .title-travel {
     color: #1f71dd !important;
+}
+
+/* Estilos mejorados para tabla de viajes */
+.tabla-viajes {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  min-width: 600px;
+}
+
+.tabla-viajes thead {
+  background: linear-gradient(135deg, #1f71dd 0%, #1557b0 100%);
+}
+
+.tabla-viajes thead th {
+  color: white;
+  font-weight: 600;
+  padding: 16px 12px;
+  text-align: left;
+  border: none;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tabla-viajes tbody tr {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.tabla-viajes tbody tr.fila-viaje-hover:hover {
+  background: linear-gradient(to right, #f0f9ff 0%, #e0f2fe 100%);
+  transform: translateX(4px);
+  box-shadow: 0 2px 8px rgba(31, 113, 221, 0.15);
+}
+
+.tabla-viajes tbody td {
+  padding: 14px 12px;
+  vertical-align: middle;
+  border: none;
+}
+
+/* Responsive para tabla de viajes */
+@media (max-width: 768px) {
+  .tabla-viajes thead th {
+    padding: 12px 8px;
+    font-size: 12px;
+  }
+
+  .tabla-viajes tbody td {
+    padding: 10px 8px;
+    font-size: 14px;
+  }
+
+  .tabla-viajes tbody tr.fila-viaje-hover:hover {
+    transform: translateX(2px);
+  }
+}
+
+@media (max-width: 480px) {
+  .tabla-viajes thead th {
+    padding: 8px 6px;
+    font-size: 11px;
+  }
+
+  .tabla-viajes tbody td {
+    padding: 8px 6px;
+    font-size: 12px;
+  }
+}
+
+/* Estilos para timeline del historial */
+.timeline {
+  position: relative;
+  padding: 10px 0;
+}
+
+.timeline-item {
+  position: relative;
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mejorar cards */
+.card {
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Animación para badges */
+.badge {
+  transition: all 0.2s ease;
+}
+
+.badge:hover {
+  transform: scale(1.05);
 }

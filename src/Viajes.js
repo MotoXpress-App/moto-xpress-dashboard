@@ -70,7 +70,11 @@ const Viajes = () => {
   return (
     <div>
       <Sidebar />
-      <div style={{ marginLeft: "220px", padding: "20px" }}>
+      <div className="main-content" style={{
+        marginLeft: "220px",
+        padding: "20px",
+        transition: "margin-left 0.3s ease"
+      }}>
         <h1 className="title-viajes">Viajes</h1>
         {/* 🔹 Navbar de tipos de viaje */}
         <div className="navbar-viajes">
@@ -94,6 +98,31 @@ const Viajes = () => {
           <TableTravel data={data} headers={headers} detalles={detalles} />
         )}
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .main-content {
+            margin-left: 0 !important;
+            padding: 10px !important;
+          }
+
+          .title-viajes {
+            font-size: 24px;
+            padding-left: 8px;
+            padding-top: 60px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .main-content {
+            padding: 8px !important;
+          }
+
+          .title-viajes {
+            font-size: 20px;
+          }
+        }
+      `}</style>
     </div>
   );
 };

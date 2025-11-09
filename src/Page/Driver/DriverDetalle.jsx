@@ -590,7 +590,7 @@ const DriverDetalle = () => {
   ];
 
   return (
-    <div style={{ marginLeft: "250px", padding: "20px" }}>
+    <div className="driver-detail-container" style={{ marginLeft: "250px", padding: "20px" }}>
       <Sidebar />
       <h1>Detalle de Usuario</h1>
 
@@ -1266,6 +1266,65 @@ const DriverDetalle = () => {
           </Button>
         </Modal.Footer>
       </Modal>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .driver-detail-container {
+            margin-left: 0 !important;
+            padding: 10px !important;
+          }
+
+          .driver-detail-container h1,
+          .driver-detail-container h3,
+          .driver-detail-container h4 {
+            padding-top: 60px;
+            font-size: 20px;
+          }
+
+          .driver-detail-container h3 {
+            font-size: 18px;
+          }
+
+          .driver-detail-container h4 {
+            font-size: 16px;
+          }
+
+          .driver-detail-container .btn {
+            width: 100%;
+            margin-bottom: 10px;
+          }
+
+          .driver-detail-container .card {
+            margin-bottom: 15px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .driver-detail-container {
+            padding: 8px !important;
+          }
+
+          .driver-detail-container h1 {
+            font-size: 18px;
+          }
+
+          .driver-detail-container h3 {
+            font-size: 16px;
+          }
+
+          .driver-detail-container h4 {
+            font-size: 14px;
+          }
+
+          .driver-detail-container form .row {
+            margin: 0;
+          }
+
+          .driver-detail-container .table {
+            font-size: 12px;
+          }
+        }
+      `}</style>
     </div>
   );
 };

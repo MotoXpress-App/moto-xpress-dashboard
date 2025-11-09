@@ -108,7 +108,7 @@ const Pagos = () => {
     return (
         <div>
             <Sidebar />
-            <div style={{ marginLeft: "220px", padding: "20px" }}>
+            <div className="pagos-container" style={{ marginLeft: "220px", padding: "20px" }}>
                 <h1>Gestión de Pagos</h1>
 
                 {success && (
@@ -343,6 +343,52 @@ const Pagos = () => {
                     </Modal.Footer>
                 </Modal>
             </div>
+
+            <style>{`
+                @media (max-width: 768px) {
+                    .pagos-container {
+                        margin-left: 0 !important;
+                        padding: 10px !important;
+                    }
+
+                    .pagos-container h1 {
+                        font-size: 24px;
+                        padding-top: 60px;
+                    }
+
+                    .pagos-container .table-responsive {
+                        font-size: 14px;
+                    }
+
+                    .pagos-container .card {
+                        margin-bottom: 15px;
+                    }
+                }
+
+                @media (max-width: 480px) {
+                    .pagos-container {
+                        padding: 8px !important;
+                    }
+
+                    .pagos-container h1 {
+                        font-size: 20px;
+                    }
+
+                    .pagos-container h2,
+                    .pagos-container h3 {
+                        font-size: 18px;
+                    }
+
+                    .pagos-container .table {
+                        font-size: 12px;
+                    }
+
+                    .pagos-container .table th,
+                    .pagos-container .table td {
+                        padding: 6px 4px;
+                    }
+                }
+            `}</style>
         </div>
     );
 };

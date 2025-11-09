@@ -3,6 +3,8 @@
   padding: 8px;
   margin-top: 17px;
   transition: margin-left 0.3s ease;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Tabla */
@@ -10,6 +12,7 @@
   width: 100%;
   border-collapse: collapse;
   background: white;
+  min-width: 600px; /* Asegura que la tabla tenga un ancho mínimo */
 }
 
 .tabla th,
@@ -17,11 +20,27 @@
   border: 1px solid #ccc;
   padding: 10px;
   text-align: left;
+  white-space: nowrap;
 }
 
 /* ----- En pantallas pequeñas ----- */
 @media (max-width: 768px) {
   .tabla-container {
     margin-left: 0; /* elimina el espacio del sidebar */
+    padding: 4px;
+  }
+
+  .tabla th,
+  .tabla td {
+    padding: 6px 8px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tabla th,
+  .tabla td {
+    padding: 4px 6px;
+    font-size: 12px;
   }
 }

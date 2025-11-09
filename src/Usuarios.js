@@ -38,10 +38,25 @@ const Usuarios = () => {
     return (
         <div>
             <Sidebar />
-            <div style={{ marginLeft: "220px" }}>
+            <div className="usuarios-container" style={{ marginLeft: "220px" }}>
                 {/*<h1>Usuarios</h1>*/}
                 <Table data={data} headers={headers} detalles={detalles} />
             </div>
+
+            <style>{`
+                @media (max-width: 768px) {
+                    .usuarios-container {
+                        margin-left: 0 !important;
+                        padding-top: 60px;
+                    }
+                }
+
+                @media (max-width: 480px) {
+                    .usuarios-container {
+                        padding: 5px;
+                    }
+                }
+            `}</style>
         </div>
     );
 };
