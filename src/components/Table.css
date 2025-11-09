@@ -10,17 +10,85 @@
 /* Tabla */
 .tabla {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   background: white;
-  min-width: 600px; /* Asegura que la tabla tenga un ancho mínimo */
+  min-width: 600px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .tabla th,
 .tabla td {
-  border: 1px solid #ccc;
-  padding: 10px;
+  padding: 14px 12px;
   text-align: left;
-  white-space: nowrap;
+}
+
+/* Estilos para tabla de usuarios */
+.tabla-usuarios thead {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+}
+
+.tabla-usuarios thead th {
+  color: white;
+  font-weight: 600;
+  padding: 16px 12px;
+  border: none;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tabla-usuarios tbody tr {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.tabla-usuarios tbody tr.fila-hover:hover {
+  background: linear-gradient(to right, #f5f3ff 0%, #ede9fe 100%);
+  transform: translateX(4px);
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.15);
+}
+
+.tabla-usuarios tbody td {
+  padding: 14px 12px;
+  vertical-align: middle;
+  border: none;
+}
+
+/* Estilos para tabla de choferes */
+.tabla-choferes thead {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.tabla-choferes thead th {
+  color: white;
+  font-weight: 600;
+  padding: 16px 12px;
+  border: none;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tabla-choferes tbody tr {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.tabla-choferes tbody tr.fila-hover:hover {
+  background: linear-gradient(to right, #ecfdf5 0%, #d1fae5 100%);
+  transform: translateX(4px);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.15);
+}
+
+.tabla-choferes tbody td {
+  padding: 14px 12px;
+  vertical-align: middle;
+  border: none;
 }
 
 /* ----- En pantallas pequeñas ----- */

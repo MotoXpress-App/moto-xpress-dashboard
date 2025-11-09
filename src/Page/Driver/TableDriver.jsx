@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table } from 'react-bootstrap';
+import { Badge } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import "../../components/Table.css"
 
@@ -12,14 +12,29 @@ const TableDriver = (props) => {
 
     // 🔹 Cuando se hace clic en una fila
     const handleFilaClick = (fila) => {
-        // Redirige a una nueva ruta (por ejemplo /usuario/123)
         navigate(`/choferes/${fila.id}`);
+    };
+
+    // 🔹 Renderizar celda con formato especial
+    const renderCell = (col, fila) => {
+        const key = getKey(col);
+        const value = fila[key];
+
+        if (key === 'id') {
+            return <Badge bg="dark" className="px-2 py-1">#{value}</Badge>;
+        } else if (key === 'email') {
+            return <span className="text-success">{value}</span>;
+        } else if (key === 'name' || key === 'lastname') {
+            return <strong>{value}</strong>;
+        }
+
+        return value;
     };
 
     return (
         <div className="tabla-container">
-            <h1>Choferes</h1>
-            <Table striped bordered hover responsive>
+            <h1 className="mb-4">Choferes</h1>
+            <table className="tabla tabla-choferes">
                 <thead>
                     <tr>
                         {props.headers.map((header, index) => (
@@ -32,15 +47,15 @@ const TableDriver = (props) => {
                         <tr
                             key={rowIndex}
                             onClick={() => handleFilaClick(fila)}
-                            style={{ cursor: 'pointer' }}
+                            className="fila-hover"
                         >
                             {props.headers.map((col, colIndex) => (
-                                <td key={colIndex}>{fila[getKey(col)]}</td>
+                                <td key={colIndex}>{renderCell(col, fila)}</td>
                             ))}
                         </tr>
                     ))}
                 </tbody>
-            </Table>
+            </table>
         </div>
     );
 };

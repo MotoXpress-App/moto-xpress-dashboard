@@ -978,7 +978,7 @@ const DriverDetalle = () => {
           <h3 style={{ marginTop:'30px' }}>Historial de viajes</h3>
 
           {/* 🔹 Navbar de tipos de viaje - Solo muestra los tipos permitidos para este chofer */}
-          <div style={{ display: 'flex', gap: '12px', marginBottom: '24px' }}>
+          <div className="navbar-viajes">
             {tiposViajeDisponibles.map((tipo) => (
               <button
                 key={tipo.id}
