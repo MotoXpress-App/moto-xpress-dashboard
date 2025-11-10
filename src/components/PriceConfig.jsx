@@ -312,7 +312,7 @@ const PriceConfig = () => {
                     </Row>
 
                     {/* Roles de Viaje */}
-                    <h6 className="text-primary border-bottom pb-2 mb-3 mt-4">Configuración de tipos de Viaje</h6>
+                    <h6 className="text-primary border-bottom pb-2 mb-3 mt-4">Multiplicadores de tipos de Viaje</h6>
                     <Row className="mb-3">
                         <Col md={4}>
                             <Form.Group>
