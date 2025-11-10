@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/moto-xpress-dashboard/static/css/main.4b5835e1.css",
-    "main.js": "/moto-xpress-dashboard/static/js/main.56fd4ef7.js",
+    "main.js": "/moto-xpress-dashboard/static/js/main.a3818956.js",
     "static/js/453.e51c244b.chunk.js": "/moto-xpress-dashboard/static/js/453.e51c244b.chunk.js",
     "static/media/logo_transparent.png": "/moto-xpress-dashboard/static/media/logo_transparent.380d8947e7ca357261ba.png",
     "static/media/motox_logo.jpeg": "/moto-xpress-dashboard/static/media/motox_logo.cef2918120ee256d449e.jpeg",
     "index.html": "/moto-xpress-dashboard/index.html",
     "main.4b5835e1.css.map": "/moto-xpress-dashboard/static/css/main.4b5835e1.css.map",
-    "main.56fd4ef7.js.map": "/moto-xpress-dashboard/static/js/main.56fd4ef7.js.map",
+    "main.a3818956.js.map": "/moto-xpress-dashboard/static/js/main.a3818956.js.map",
     "453.e51c244b.chunk.js.map": "/moto-xpress-dashboard/static/js/453.e51c244b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4b5835e1.css",
-    "static/js/main.56fd4ef7.js"
+    "static/js/main.a3818956.js"
   ]
 }
