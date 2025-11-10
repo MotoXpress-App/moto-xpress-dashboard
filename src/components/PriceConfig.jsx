@@ -388,7 +388,7 @@ const PriceConfig = () => {
 
                         <Col md={4}>
                             <Form.Group>
-                                <Form.Label>Gomeria mobil</Form.Label>
+                                <Form.Label>Gomeria movil</Form.Label>
                                 <Form.Control
                                     type="number"
                                     step="1"
@@ -397,6 +397,9 @@ const PriceConfig = () => {
                                     onChange={handleChange}
                                     disabled={loading}
                                 />
+                                <Form.Text className="text-muted">
+                                    Costo del parche
+                                </Form.Text>
                             </Form.Group>
                         </Col>
                     </Row>
