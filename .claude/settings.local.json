@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir \"C:\\project\\apk\\MotoXpress-Monitor\\src\\Page\")",
+      "Bash(nul)",
+      "Bash(dir \"C:\\project\\apk\\MotoXpress-Monitor\")",
+      "Bash(findstr:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
